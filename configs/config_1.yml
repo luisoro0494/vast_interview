@@ -1,0 +1,12 @@
+simulator_duration_hrs: 72 # hours
+
+number_of_mining_trucks: 40
+number_of_unloading_sites: 20
+
+mining_truck_travel_time_minutes: 30 # minutes
+unloading_duration_minutes: 5 # minutes
+
+mining_duration_min_hrs: 1 # hour
+mining_duration_max_hrs: 5 # hour
+
+
