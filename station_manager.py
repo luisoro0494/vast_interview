@@ -1,5 +1,6 @@
 import logging
 logger = logging.getLogger(__name__)
+
 class station_manager:
     """
     Represents a station manager.
@@ -100,5 +101,5 @@ class station_manager:
                 truck_in_queue = station.dequeue_truck()
                 station.is_available = False
                 return truck_in_queue, station
-                
+
         return None, None
