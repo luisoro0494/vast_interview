@@ -39,3 +39,11 @@ This repository contains a Python simulation for a lunar Helium-3 space mining o
 ## Example Output
 
 You can view an example of the simulation's log output by following [this link](https://raw.githubusercontent.com/luisoro0494/vast_interview/main/2024-09-12-01-01_lunar_helium_3_sim.log).
+
+
+## Unit Testing
+
+To run unit tests, run the following commands:
+```bash
+pytest test_state_machine.py
+pytest test_station_manager.py
