@@ -45,5 +45,26 @@ You can view an example of the simulation's log output by following [this link](
 
 To run unit tests, run the following commands:
 ```bash
-pytest test_state_machine.py
-pytest test_station_manager.py
+    pytest test_state_machine.py
+    pytest test_station_manager.py
+```
+
+## Design Approach
+
+I used a state machine to simulate the mining operation, with trucks cycling through states like mining, traveling, and unloading. This approach simplifies future modifications by isolating the logic for each state.
+
+Each truck mines for a random duration (1-5 hours), then travels to an unload station (30 minutes) to unload (5 minutes). If stations are occupied, trucks are added to a queue.
+
+A Station Manager handles the queuing, tracking the status of each station and assigning trucks to the station with the shortest queue. Once a station becomes available, it serves the first truck in line.
+
+At the end of the simulation, a report logs key statistics:
+
+ - Truck performance: Number of completed loads and time spent in each state.
+ - Station performance: Utilization and queue lengths.
+
+This design is flexible and can easily accommodate future changes, such as modifying queuing logic or adding prioritization.
+
+Future Design Improvements:
+ - Adjust the user interface based on the target audience:
+    - For example, if the end user isn’t familiar with code, the configuration could be managed through a .yml file to avoid direct interaction with the source code.
+ - Enhance the statistics report to include more detailed output, with the option to export the data to a CSV file, controlled via the configuration file.
