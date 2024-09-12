@@ -14,21 +14,28 @@ num_unload_stations = 2
 truck_unload_duration = 5
 sim_duration_hrs = 72
 
-def create_stations(num_unload_stations: int):
+def create_stations(num_unload_stations : int) -> list:
+    """
+    Generates a list of unloading_stations objects.
 
-    for m in range(num_unload_stations):
-        unloading_stations.append(m_unload_station(station_ID = m))
-    
-    return unloading_stations
+    Returns:
+        None
+    """
+    return [m_unload_station(station_ID=m) for m in range(num_unload_stations)]
 
-def test_state_transition():
+def test_state_transition() -> None:
+    """
+    Runs each test case for each state in the mining process. 
 
+    Returns:
+        None
+    """
     stations = create_stations(2)
     s_m = station_manager(stations)
     
     # Create two trucks
-    truck_1 = n_truck(truck_ID=1, stations=stations, unload_duration=5, mining_duration=10, station_manager=s_m)
-    truck_2 = n_truck(truck_ID=2, stations=stations, unload_duration=5, mining_duration=10, station_manager=s_m)
+    truck_1 = n_truck(truck_ID=1, stations=stations, unload_duration=5, travel_to_unload = 30, mining_duration=10, station_manager=s_m)
+    truck_2 = n_truck(truck_ID=2, stations=stations, unload_duration=5, travel_to_unload = 30, mining_duration=10, station_manager=s_m)
 
     # initialize current time on truck 1
     truck_1.update_current_time(0)

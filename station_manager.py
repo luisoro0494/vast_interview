@@ -21,15 +21,16 @@ class station_manager:
                         serve the next truck in queue.
     """
     def __init__(self, stations):
-        self.stations = stations
         """
         Initializes the station_manager class with a list of station objects.
 
         Args:
             stations (list): A list of station objects.
         """
+        self.stations = stations
+
     def get_available_station(self) -> object:
-         """
+        """
         Find and return an available station with no queue
         
         Returns:
@@ -50,7 +51,6 @@ class station_manager:
         Returns:
             unload_stations: Returns an unload_stations object with the smallest queue.
         """
-
         # check if truck_id is already in any of the station queues. Avoids duplicates.
         id_already_in_queue = any(truck_id in station.truck_queue for station in self.stations)
         if truck_id and not id_already_in_queue:
@@ -70,6 +70,7 @@ class station_manager:
         Returns:
             None
         """
+        self.stations[station_id].add_to_served_counter()
         self.stations[station_id].is_available = True
 
     def block_station(self, station_id : int) -> None:
@@ -92,7 +93,6 @@ class station_manager:
                 - object: truck_in_queue
                 - object: unload_stations instance
         """ 
-
         for station in self.stations:
             if station.truck_queue:
                 logger.debug(f"Truck queue at station ({station.ID} is: {station.truck_queue})")
